@@ -7,14 +7,14 @@
 #include <string>
 #include <functional>
 
-//Основные функции
+//РћСЃРЅРѕРІРЅС‹Рµ С„СѓРЅРєС†РёРё
 bool LoadingList(const std::string fileName, Employee* &head);
 bool UnloadingList(const std::string fileName, Employee* head);
 unsigned ListLength(Employee* head);
 void PrintList(const Employee* head);
 void deleteElement(Employee*& head, std::string userField, int choice);
 
-//Вспомгательные функции
+//Р’СЃРїРѕРјРіР°С‚РµР»СЊРЅС‹Рµ С„СѓРЅРєС†РёРё
 bool getListFromFile(Employee*& head, std::ifstream& fileName);
 void getNewTrade(Employee*& head, std::stringstream& lieStream);
 void InitializationNewTrade(std::stringstream& lineStream, Employee*& init_head);
@@ -24,7 +24,7 @@ bool checkIfEqual(Employee*& currElement, std::string userField, int choice);
 
 
 
-//Пользовательские функции
+//РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёРµ С„СѓРЅРєС†РёРё
 void MenuForChoices();
 void case1(Employee* head);
 void case2(Employee*& head);
