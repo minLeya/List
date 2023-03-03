@@ -8,14 +8,14 @@
 #include "constants.h"
 
 
-//ОСНОВНЫЕ ФУНКЦИИ
-//Вывод данных из файла в динамический список
+//РћРЎРќРћР’РќР«Р• Р¤РЈРќРљР¦РР
+//Р’С‹РІРѕРґ РґР°РЅРЅС‹С… РёР· С„Р°Р№Р»Р° РІ РґРёРЅР°РјРёС‡РµСЃРєРёР№ СЃРїРёСЃРѕРє
 bool LoadingList(const std::string fileName, Employee*& head)
 {
 	std::ifstream out_DataFile(fileName);
 	if (!out_DataFile)
 	{
-		std::cerr << "Не удалось открыть файл!" << '\n';
+		std::cerr << "РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р»!" << '\n';
 		return false;
 	}
 	else
@@ -27,14 +27,14 @@ bool LoadingList(const std::string fileName, Employee*& head)
 	}
 }
 
-//Вывод данных из динамического списка в файл
+//Р’С‹РІРѕРґ РґР°РЅРЅС‹С… РёР· РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ СЃРїРёСЃРєР° РІ С„Р°Р№Р»
 bool UnloadingList(const std::string fileName, Employee* head)
 {
 	Employee* tail{ head };
 	std::ofstream in_DataFile(fileName);
 	if (!in_DataFile)
 	{
-		std::cerr << "Не удалось открыть файл!" << '\n';
+		std::cerr << "РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р»!" << '\n';
 		return false;
 	}
 	else
@@ -57,7 +57,7 @@ bool UnloadingList(const std::string fileName, Employee* head)
 			{
 				Employee* clean_ptr{ tail };
 				tail = tail->next;
-				std::cout << "Данные о человеке " << clean_ptr->data.surname << ",... выгружены и удалены из оперативной памяти." << '\n';
+				std::cout << "Р”Р°РЅРЅС‹Рµ Рѕ С‡РµР»РѕРІРµРєРµ " << clean_ptr->data.surname << ",... РІС‹РіСЂСѓР¶РµРЅС‹ Рё СѓРґР°Р»РµРЅС‹ РёР· РѕРїРµСЂР°С‚РёРІРЅРѕР№ РїР°РјСЏС‚Рё." << '\n';
 				delete clean_ptr;
 				if (tail == head)
 					break;
@@ -69,7 +69,7 @@ bool UnloadingList(const std::string fileName, Employee* head)
 	}
 }
 
-//Для case1 - количество элементов динамического списка
+//Р”Р»СЏ case1 - РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ СЃРїРёСЃРєР°
 unsigned ListLength(Employee* head)
 {
 	Employee* current{ head };
@@ -96,14 +96,14 @@ unsigned ListLength(Employee* head)
 	}
 }
 
-//Для case3 - печать списка на консоль
+//Р”Р»СЏ case3 - РїРµС‡Р°С‚СЊ СЃРїРёСЃРєР° РЅР° РєРѕРЅСЃРѕР»СЊ
 void PrintList(const Employee* head)
 {
 	const Employee* tail{ head };
 	if (head != nullptr)
 	{
 		int index_number{};
-		std::cout << "\t\tВаш список:" << '\n';
+		std::cout << "\t\tР’Р°С€ СЃРїРёСЃРѕРє:" << '\n';
 		do {
 			index_number++;
 			std::cout << index_number << ") " << tail->data.surname << ";" << tail->data.name << ";" << tail->data.middlename << ";" << tail->data.age << ";" << tail->data.maritalstatus << '\n';
@@ -112,13 +112,13 @@ void PrintList(const Employee* head)
 	}
 	else
 	{
-		std::cout << "Список пуст." << '\n';
+		std::cout << "РЎРїРёСЃРѕРє РїСѓСЃС‚." << '\n';
 	}
 }
 
 
-//ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
-//Построчное чтение данных из файла 
+//Р’РЎРџРћРњРћР“РђРўР•Р›Р¬РќР«Р• Р¤РЈРќРљР¦РР
+//РџРѕСЃС‚СЂРѕС‡РЅРѕРµ С‡С‚РµРЅРёРµ РґР°РЅРЅС‹С… РёР· С„Р°Р№Р»Р° 
 bool getListFromFile(Employee*& head, std::ifstream& fileName)
 {
 	int count_str{ 0 }, flag{};
@@ -137,7 +137,7 @@ bool getListFromFile(Employee*& head, std::ifstream& fileName)
 }
 
 
-//Получение нового элемента по указателю и информационному полю
+//РџРѕР»СѓС‡РµРЅРёРµ РЅРѕРІРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РїРѕ СѓРєР°Р·Р°С‚РµР»СЋ Рё РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕРјСѓ РїРѕР»СЋ
 void getNewTrade(Employee*& head, std::stringstream& lineStream)
 {
 	if (head == nullptr)
@@ -160,7 +160,7 @@ void getNewTrade(Employee*& head, std::stringstream& lineStream)
 	}
 }
 
-//Обеспечение записи данных в информационное поле элемента динамического списка с привязыванием их к указателю
+//РћР±РµСЃРїРµС‡РµРЅРёРµ Р·Р°РїРёСЃРё РґР°РЅРЅС‹С… РІ РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕРµ РїРѕР»Рµ СЌР»РµРјРµРЅС‚Р° РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ СЃРїРёСЃРєР° СЃ РїСЂРёРІСЏР·С‹РІР°РЅРёРµРј РёС… Рє СѓРєР°Р·Р°С‚РµР»СЋ
 void InitializationNewTrade(std::stringstream& lineStream, Employee*& init_head)
 {
 	std::string data{};
@@ -180,13 +180,13 @@ void InitializationNewTrade(std::stringstream& lineStream, Employee*& init_head)
 }
 
 
-//Запрос действий с динамическим списком у пользователя
+//Р—Р°РїСЂРѕСЃ РґРµР№СЃС‚РІРёР№ СЃ РґРёРЅР°РјРёС‡РµСЃРєРёРј СЃРїРёСЃРєРѕРј Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 char getCase()
 {
 	while (true)
 	{
 		MenuForChoices();
-		std::cout << "Ваш выбор: ";
+		std::cout << "Р’Р°С€ РІС‹Р±РѕСЂ: ";
 		std::string choice{};
 		std::getline(std::cin, choice);
 		if (choice == "1" || choice == "2" || choice == "3" || choice == "4" || choice == "5")
@@ -195,12 +195,12 @@ char getCase()
 		}
 		else
 		{
-			std::cout << '\n' << "Ошибка ввода, Вам нужно ввести номер вашего выбора в соответствии с нижеперечисленными пунктами (от 1 до 5). Повторите ввод:" << '\n';
+			std::cout << '\n' << "РћС€РёР±РєР° РІРІРѕРґР°, Р’Р°Рј РЅСѓР¶РЅРѕ РІРІРµСЃС‚Рё РЅРѕРјРµСЂ РІР°С€РµРіРѕ РІС‹Р±РѕСЂР° РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃ РЅРёР¶РµРїРµСЂРµС‡РёСЃР»РµРЅРЅС‹РјРё РїСѓРЅРєС‚Р°РјРё (РѕС‚ 1 РґРѕ 5). РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ:" << '\n';
 		}
 	}
 }
 
-////Получение номера элемента у пользователя (для удаления)
+////РџРѕР»СѓС‡РµРЅРёРµ РЅРѕРјРµСЂР° СЌР»РµРјРµРЅС‚Р° Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ (РґР»СЏ СѓРґР°Р»РµРЅРёСЏ)
 //double GetNumber()
 //{
 //	while (true)
@@ -211,12 +211,12 @@ char getCase()
 //		{
 //			std::cin.clear();
 //			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-//			std::cout << "Ошибка ввода, Вы ввели не число. Повторите ввод:\n";
+//			std::cout << "РћС€РёР±РєР° РІРІРѕРґР°, Р’С‹ РІРІРµР»Рё РЅРµ С‡РёСЃР»Рѕ. РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ:\n";
 //		}
 //		else if (num != static_cast<int>(num))
 //		{
 //			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-//			std::cout << "Вы ввели не натуральное число. Повторите ввод:\n ";
+//			std::cout << "Р’С‹ РІРІРµР»Рё РЅРµ РЅР°С‚СѓСЂР°Р»СЊРЅРѕРµ С‡РёСЃР»Рѕ. РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ:\n ";
 //		}
 //		else
 //		{
@@ -227,26 +227,26 @@ char getCase()
 //}
 
 
-//ПОЛЬЗОВАТЕЛЬСКИЕ ФУНКЦИИ
-//Пользовательское меню
+//РџРћР›Р¬Р—РћР’РђРўР•Р›Р¬РЎРљРР• Р¤РЈРќРљР¦РР
+//РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ РјРµРЅСЋ
 void MenuForChoices()
 {
-	std::cout << "Что Вы хотите сделать?" << '\n' <<
-		"1) Подсчитать число элементов списка." << '\n' <<
-		"2) Удалить заданный элемент из списка по полю." << '\n' <<
-		"3) Печать всех элементов (вывод на консоль)." << '\n' <<
-		"4) Сброс значений всех элементов (все значения элементов будут обнулены)." << '\n' <<
-		"5) Выход." << '\n';
+	std::cout << "Р§С‚Рѕ Р’С‹ С…РѕС‚РёС‚Рµ СЃРґРµР»Р°С‚СЊ?" << '\n' <<
+		"1) РџРѕРґСЃС‡РёС‚Р°С‚СЊ С‡РёСЃР»Рѕ СЌР»РµРјРµРЅС‚РѕРІ СЃРїРёСЃРєР°." << '\n' <<
+		"2) РЈРґР°Р»РёС‚СЊ Р·Р°РґР°РЅРЅС‹Р№ СЌР»РµРјРµРЅС‚ РёР· СЃРїРёСЃРєР° РїРѕ РїРѕР»СЋ." << '\n' <<
+		"3) РџРµС‡Р°С‚СЊ РІСЃРµС… СЌР»РµРјРµРЅС‚РѕРІ (РІС‹РІРѕРґ РЅР° РєРѕРЅСЃРѕР»СЊ)." << '\n' <<
+		"4) РЎР±СЂРѕСЃ Р·РЅР°С‡РµРЅРёР№ РІСЃРµС… СЌР»РµРјРµРЅС‚РѕРІ (РІСЃРµ Р·РЅР°С‡РµРЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ Р±СѓРґСѓС‚ РѕР±РЅСѓР»РµРЅС‹)." << '\n' <<
+		"5) Р’С‹С…РѕРґ." << '\n';
 }
 
-//Запрос количества элементов в списке пользователем
+//Р—Р°РїСЂРѕСЃ РєРѕР»РёС‡РµСЃС‚РІР° СЌР»РµРјРµРЅС‚РѕРІ РІ СЃРїРёСЃРєРµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
 void case1(Employee* head)
 {
 	unsigned length = ListLength(head);
-	std::cout << "Длина Вашего списка на данный момент: " << length << '\n';
+	std::cout << "Р”Р»РёРЅР° Р’Р°С€РµРіРѕ СЃРїРёСЃРєР° РЅР° РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚: " << length << '\n';
 }
-//удаление
-//проверка соответствия поля
+//СѓРґР°Р»РµРЅРёРµ
+//РїСЂРѕРІРµСЂРєР° СЃРѕРѕС‚РІРµС‚СЃС‚РІРёСЏ РїРѕР»СЏ
 bool checkIfEqual(Employee*& currElement, std::string userField, int choice)
 {
 	switch (choice)
@@ -274,29 +274,29 @@ bool checkIfEqual(Employee*& currElement, std::string userField, int choice)
 	}
 	return false;
 }
-//удаление элемента по полю
+//СѓРґР°Р»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РїРѕ РїРѕР»СЋ
 void deleteElement(Employee*& head, std::string userField, int choice)
 {
 	if (head == nullptr) {
-		std::cout << "Список пустой.";
+		std::cout << "РЎРїРёСЃРѕРє РїСѓСЃС‚РѕР№.";
 		return;
 	}
 	Employee* temp{ head };
 	Employee* prev{ nullptr };
-	// удаляем первый элемент если совпадают поля
+	// СѓРґР°Р»СЏРµРј РїРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚ РµСЃР»Рё СЃРѕРІРїР°РґР°СЋС‚ РїРѕР»СЏ
 	if (checkIfEqual(head, userField, choice))
 	{
-		// находим последний элемент
+		// РЅР°С…РѕРґРёРј РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚
 		while (temp->next != head)
 			temp = temp->next;
 
-		// ставим указатель с последнего элемента на второй вместо первого
+		// СЃС‚Р°РІРёРј СѓРєР°Р·Р°С‚РµР»СЊ СЃ РїРѕСЃР»РµРґРЅРµРіРѕ СЌР»РµРјРµРЅС‚Р° РЅР° РІС‚РѕСЂРѕР№ РІРјРµСЃС‚Рѕ РїРµСЂРІРѕРіРѕ
 		temp->next = head->next;
 		delete head;
 		head = temp->next;
 		return;
 	}
-	// храним предыдущий элемент и переадресовываем его next в случае удаления temp 
+	// С…СЂР°РЅРёРј РїСЂРµРґС‹РґСѓС‰РёР№ СЌР»РµРјРµРЅС‚ Рё РїРµСЂРµР°РґСЂРµСЃРѕРІС‹РІР°РµРј РµРіРѕ next РІ СЃР»СѓС‡Р°Рµ СѓРґР°Р»РµРЅРёСЏ temp 
 	while (true) {
 		prev = temp;
 		temp = temp->next;
@@ -304,56 +304,56 @@ void deleteElement(Employee*& head, std::string userField, int choice)
 			break;
 		}
 		if (checkIfEqual(temp, userField, choice)) {
-			std::cout << "Удалён элемент: " << temp->data.surname << '\n';
-			// переадресация
+			std::cout << "РЈРґР°Р»С‘РЅ СЌР»РµРјРµРЅС‚: " << temp->data.surname << '\n';
+			// РїРµСЂРµР°РґСЂРµСЃР°С†РёСЏ
 			prev->next = temp->next;
 			delete temp;
 			return;
 		}
 	}
-	std::cout << "Элемент не найден.\n";
+	std::cout << "Р­Р»РµРјРµРЅС‚ РЅРµ РЅР°Р№РґРµРЅ.\n";
 }
 
-//Запрос удаления элемента в списке у пользователем
+//Р—Р°РїСЂРѕСЃ СѓРґР°Р»РµРЅРёСЏ СЌР»РµРјРµРЅС‚Р° РІ СЃРїРёСЃРєРµ Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
 void case2(Employee*& head)
 {
 	if (head != nullptr)
 	{
 		Employee* current{ head }, * search{ head };
 		int num{};
-		std::cout << "По какому полю провести удаление?" << '\n';
-		std::cout << "1. По фамилии\n2. По имени\n3. По отчеству\n4. По возрасту\n5. По семейному положению" << '\n';
+		std::cout << "РџРѕ РєР°РєРѕРјСѓ РїРѕР»СЋ РїСЂРѕРІРµСЃС‚Рё СѓРґР°Р»РµРЅРёРµ?" << '\n';
+		std::cout << "1. РџРѕ С„Р°РјРёР»РёРё\n2. РџРѕ РёРјРµРЅРё\n3. РџРѕ РѕС‚С‡РµСЃС‚РІСѓ\n4. РџРѕ РІРѕР·СЂР°СЃС‚Сѓ\n5. РџРѕ СЃРµРјРµР№РЅРѕРјСѓ РїРѕР»РѕР¶РµРЅРёСЋ" << '\n';
 		std::cin >> num;
 		std::string userField{};
 		switch (num)
 		{
 		case 1:
-			std::cout << "Введите фамилию: ";
+			std::cout << "Р’РІРµРґРёС‚Рµ С„Р°РјРёР»РёСЋ: ";
 			std::cin >> userField;
 			deleteElement(head, userField, num);
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			break;
 		case 2:
-			std::cout << "Введите имя: ";
+			std::cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ: ";
 			std::cin >> userField;
 			deleteElement(head, userField, num);
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			break;
 		case 3:
-			std::cout << "Введите отчество: ";
+			std::cout << "Р’РІРµРґРёС‚Рµ РѕС‚С‡РµСЃС‚РІРѕ: ";
 			std::cin >> userField;
 			deleteElement(head, userField, num);
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			break;
 
 		case 4:
-			std::cout << "Введите возраст: ";
+			std::cout << "Р’РІРµРґРёС‚Рµ РІРѕР·СЂР°СЃС‚: ";
 			std::cin >> userField;
 			deleteElement(head, userField, num);
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			break;
 		case 5:
-			std::cout << "Введите семейное положение: ";
+			std::cout << "Р’РІРµРґРёС‚Рµ СЃРµРјРµР№РЅРѕРµ РїРѕР»РѕР¶РµРЅРёРµ: ";
 			std::cin >> userField;
 			deleteElement(head, userField, num);
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -362,21 +362,21 @@ void case2(Employee*& head)
 	}
 }
 	
-//Запрос печати списка у пользователем
+//Р—Р°РїСЂРѕСЃ РїРµС‡Р°С‚Рё СЃРїРёСЃРєР° Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
 void case3(const Employee* head)
 {
 	PrintList(head);
 }
 
-//Основная функция и пользовательская - запрос сброса значений элементов в списке у пользователем
+//РћСЃРЅРѕРІРЅР°СЏ С„СѓРЅРєС†РёСЏ Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєР°СЏ - Р·Р°РїСЂРѕСЃ СЃР±СЂРѕСЃР° Р·РЅР°С‡РµРЅРёР№ СЌР»РµРјРµРЅС‚РѕРІ РІ СЃРїРёСЃРєРµ Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
 void case4(Employee* head)
 {
 	if (head != nullptr)
 	{
 		Employee* tail{ head };
-		std::cout << "Вы уверены?" << '\n' <<
-			"Да - 1" << '\n' <<
-			"Нет - 2" << '\n';
+		std::cout << "Р’С‹ СѓРІРµСЂРµРЅС‹?" << '\n' <<
+			"Р”Р° - 1" << '\n' <<
+			"РќРµС‚ - 2" << '\n';
 		while (true)
 		{
 			char sm;
@@ -392,7 +392,7 @@ void case4(Employee* head)
 					tail->data.maritalstatus = DEFAULT_EMPLOYEE.def_maritalstatus;
 					tail = tail->next;
 				} while (tail != head);
-				std::cout << "Список был обновлен: все значения элементов сброшены." << '\n';
+				std::cout << "РЎРїРёСЃРѕРє Р±С‹Р» РѕР±РЅРѕРІР»РµРЅ: РІСЃРµ Р·РЅР°С‡РµРЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ СЃР±СЂРѕС€РµРЅС‹." << '\n';
 				break;
 			}
 			else if (sm == '2')
@@ -401,12 +401,12 @@ void case4(Employee* head)
 			}
 			else
 			{
-				std::cout << "Ошибка ввода. Введите 1 или 2: \n";
+				std::cout << "РћС€РёР±РєР° РІРІРѕРґР°. Р’РІРµРґРёС‚Рµ 1 РёР»Рё 2: \n";
 			}
 		}
 	}
 	else
 	{
-		std::cerr << "Список пуст, данное действие не может быть выполнено." << '\n';
+		std::cerr << "РЎРїРёСЃРѕРє РїСѓСЃС‚, РґР°РЅРЅРѕРµ РґРµР№СЃС‚РІРёРµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РІС‹РїРѕР»РЅРµРЅРѕ." << '\n';
 	}
 }
